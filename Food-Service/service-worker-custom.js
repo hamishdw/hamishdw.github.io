@@ -33,10 +33,17 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('event',event);
   event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
+    caches.match(event.request).then(function(resp) {
+      return resp || fetch(event.request).then(function(response) {
+        return caches.open(CACHE_NAME).then(function(cache) {
+          console.log('cache',cache);
+          console.log('event.request',event.request);
+          console.log('response',response);
+          cache.put(event.request, response.clone());
+          return response;
+        });  
+      });
     })
   );
 });
