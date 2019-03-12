@@ -5,6 +5,8 @@
 // See https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
 
 self.addEventListener('activate', () => {
+  alert('activated');
+
   self.clients.matchAll({ type: 'window' }).then(windowClients => {
     for (let windowClient of windowClients) {
       // Force open pages to refresh, so that they have a chance to load the
@@ -22,6 +24,7 @@ var urlsToCache = [
 ];
 
 self.addEventListener('install', function(event) {
+  alert('installing');
   // Perform install steps
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -33,6 +36,8 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+  alert('fetching');
+
   event.respondWith(
     caches.match(event.request).then(function(response) {
       return response || fetch(event.request);
