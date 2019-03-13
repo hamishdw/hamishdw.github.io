@@ -4,7 +4,14 @@
 // file that will precache your site's local assets.
 // See https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
 
-self.addEventListener('activate', () => {
+var CACHE_NAME = 'my-site-cache-v1';
+var urlsToCache = [
+  './',
+  './videos/video-1.mp4',
+  './videos/video-2.mp4'
+];
+
+self.addEventListener('activate', event => {
   self.clients.matchAll({ type: 'window' }).then(windowClients => {
     for (let windowClient of windowClients) {
       // Force open pages to refresh, so that they have a chance to load the
@@ -12,14 +19,17 @@ self.addEventListener('activate', () => {
       windowClient.navigate(windowClient.url);
     }
   });
-});
 
-var CACHE_NAME = 'my-site-cache-v1';
-var urlsToCache = [
-  './',
-  './videos/video-1.mp4',
-  './videos/video-2.mp4'
-];
+  event.waitUntil(
+    caches.keys().then(function(keyList) {
+      return Promise.all(keyList.map(function(key) {
+        if (CACHE_NAME.indexOf(key) === -1) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
+});
 
 self.addEventListener('install', function(event) {
   // Perform install steps
@@ -31,22 +41,6 @@ self.addEventListener('install', function(event) {
       })
   );
 });
-
-// self.addEventListener('fetch', function(event) {
-//   event.respondWith(
-//     caches.match(event.request).then(function(resp) {
-//       return resp || fetch(event.request).then(function(response) {
-//         return caches.open(CACHE_NAME).then(function(cache) {
-//           console.log('cache',cache);
-//           console.log('event.request',event.request);
-//           console.log('response',response);
-//           cache.put(event.request, response.clone());
-//           return response;
-//         });  
-//       });
-//     })
-//   );
-// });
 
 //This code is based on  https://googlechrome.github.io/samples/service-worker/prefetch-video/ 
 
