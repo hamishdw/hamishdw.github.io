@@ -7,6 +7,7 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
   './',
+  './videos/video-1 copy.mp4',
   './videos/video-1.mp4',
   './videos/video-2.mp4'
 ];
