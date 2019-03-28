@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["static/css/main.6d88e845.css","cafbf92b4ccb8fa020ad988300908436"],["static/js/main.4ac19703.js","a4ab298aadf2a8ef3711c76d415278d9"],["static/media/DalaMoa-Medium.1ffc0988.otf","1ffc0988edca07d37e20b0cbcabf9196"],["static/media/Pitch-Light.6956ca30.otf","6956ca30acb1e3a171b13f45524e2431"],["static/media/ring.3ead7b5a.png","3ead7b5a03b416edd3ca42fb2639d696"]];
+var precacheConfig = [["static/css/main.c9c92acb.css","0d0d0974cf2c0f1883454e9d2b8e21e4"],["static/js/main.e3aa72c6.js","013636f91f63343326294b99c9259fd7"],["static/media/DalaMoa-Medium.1ffc0988.otf","1ffc0988edca07d37e20b0cbcabf9196"],["static/media/Pitch-Light.6956ca30.otf","6956ca30acb1e3a171b13f45524e2431"],["static/media/slider.9537dae6.svg","9537dae604b2936694dbf895de433147"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 
