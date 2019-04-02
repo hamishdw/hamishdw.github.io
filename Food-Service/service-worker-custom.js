@@ -8,7 +8,10 @@ var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
   './',
   './videos/masterbrand.mp4',
-  './videos/source.mp4'
+  './videos/source.mp4',
+  './videos/sustainability-1.mp4',
+  './videos/sustainability-2.mp4',
+  './videos/sustainability-big.mp4'
 ];
 
 self.addEventListener('activate', event => {
