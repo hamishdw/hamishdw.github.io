@@ -7,10 +7,11 @@
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
   './',
-  './videos/masterbrand.mp4',
-  './videos/source.mp4',
+  './videos/040419_SHOT 02.3.mp4',
+  './videos/040419_SHOT 04.2.mp4',
+  './videos/040419_SHOT 05.02.mp4',
+  './videos/040419_SHOT 06.2.mp4',
   './videos/sustainability-1.mp4',
-  './videos/sustainability-2.mp4',
   './videos/sustainability-big.mp4'
 ];
 
