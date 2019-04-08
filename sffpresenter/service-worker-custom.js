@@ -5,19 +5,23 @@
 // See https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
 
 var CACHE_NAME = 'my-site-cache-v5';
+// var urlsToCache = [
+//   '/static/',
+//   '/images/',
+//   '/apple-icon-60x60.png',
+//   '/asset-manifest.json',
+//   '/icon.png',
+//   '/index.html',
+//   '/manifest.json',
+//   '/service-worker-custom.js',
+//   '/videos/video2.mp4',
+//   '/videos/video3.mp4',
+//   '/videos/video4.mp4',
+//   '/videos/sustainability-big.mp4'
+// ];
+
 var urlsToCache = [
-  '/static/',
-  '/images/',
-  '/apple-icon-60x60.png',
-  '/asset-manifest.json',
-  '/icon.png',
-  '/index.html',
-  '/manifest.json',
-  '/service-worker-custom.js',
-  '/videos/video2.mp4',
-  '/videos/video3.mp4',
-  '/videos/video4.mp4',
-  '/videos/sustainability-big.mp4'
+  '/'
 ];
 
 self.addEventListener('activate', event => {
