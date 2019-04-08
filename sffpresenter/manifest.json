@@ -6,7 +6,6 @@
   "display": "fullscreen",
   "orientation": "portrait",
   "Scope": "/",
-  "start_url": "/sffpresenter.com",
   "icons": [
     {
       "src": "images/favicons/icon-72x72.png",
