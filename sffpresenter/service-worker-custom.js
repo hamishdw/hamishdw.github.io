@@ -84,7 +84,7 @@ self.addEventListener('fetch', function(event) {
             headers: [
               // ['Content-Type', 'video/webm'],
               ['Content-Range', 'bytes ' + pos + '-' +
-                (ab.byteLength - 1) + './' + ab.byteLength]]
+                (ab.byteLength - 1) + '/' + ab.byteLength]]
           });
       }));
   } else {
