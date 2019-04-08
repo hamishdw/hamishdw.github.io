@@ -6,19 +6,19 @@
 
 var CACHE_NAME = 'my-site-cache-v5';
 var urlsToCache = [
-  './static/',
-  './images/',
-  './apple-icon-60x60.png',
-  './asset-manifest.json',
-  './icon.png',
-  './index.html',
-  './manifest.json',
-  './service-worker-custom.js',
-  './service-worker.js',
-  './videos/video2.mp4',
-  './videos/video3.mp4',
-  './videos/video4.mp4',
-  './videos/sustainability-big.mp4'
+  '/static/',
+  '/images/',
+  '/apple-icon-60x60.png',
+  '/asset-manifest.json',
+  '/icon.png',
+  '/index.html',
+  '/manifest.json',
+  '/service-worker-custom.js',
+  '/service-worker.js',
+  '/videos/video2.mp4',
+  '/videos/video3.mp4',
+  '/videos/video4.mp4',
+  '/videos/sustainability-big.mp4'
 ];
 
 self.addEventListener('activate', event => {
