@@ -4,19 +4,15 @@
 // file that will precache your site's local assets.
 // See https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
 
-// var urlsToCache = [
-//   './',
-//   './videos/video2.mp4',
-//   './videos/video3.mp4',
-//   './videos/video4.mp4',
-//   './videos/video5.mp4',
-//   './videos/sustainability-big.mp4',
-//   './videos/video7.mp4'
-// ];
-
-var CACHE_NAME = 'my-site-cache-v4';
+var CACHE_NAME = 'my-site-cache-v5';
 var urlsToCache = [
-  './'
+  './',
+  './videos/video2.mp4',
+  './videos/video3.mp4',
+  './videos/video4.mp4',
+  './videos/video5.mp4',
+  './videos/sustainability-big.mp4',
+  './videos/video7.mp4'
 ];
 
 self.addEventListener('activate', event => {
