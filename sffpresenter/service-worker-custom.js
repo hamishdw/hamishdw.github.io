@@ -5,7 +5,18 @@ var CURRENT_CACHES = {
 
 self.addEventListener('install', function(event) {
   var urlsToPrefetch = [
-    './'
+    './static/',
+    './images/',
+    './apple-icon-60x60.png',
+    './asset-manifest.json',
+    './icon.png',
+    './index.html',
+    './manifest.json',
+    './service-worker-custom.js',
+    './videos/video2.mp4',
+    './videos/video3.mp4',
+    './videos/video4.mp4',
+    './videos/sustainability-big.mp4'
   ];
 
   // All of these logging statements should be visible via the "Inspect" interface
@@ -73,7 +84,7 @@ self.addEventListener('fetch', function(event) {
             headers: [
               // ['Content-Type', 'video/webm'],
               ['Content-Range', 'bytes ' + pos + '-' +
-                (ab.byteLength - 1) + '/' + ab.byteLength]]
+                (ab.byteLength - 1) + './' + ab.byteLength]]
           });
       }));
   } else {
