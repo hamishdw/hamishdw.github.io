@@ -14,7 +14,6 @@ var urlsToCache = [
   '/index.html',
   '/manifest.json',
   '/service-worker-custom.js',
-  '/service-worker.js',
   '/videos/video2.mp4',
   '/videos/video3.mp4',
   '/videos/video4.mp4',
