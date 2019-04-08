@@ -4,15 +4,19 @@
 // file that will precache your site's local assets.
 // See https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
 
-var CACHE_NAME = 'my-site-cache-v1';
+// var urlsToCache = [
+//   './',
+//   './videos/video2.mp4',
+//   './videos/video3.mp4',
+//   './videos/video4.mp4',
+//   './videos/video5.mp4',
+//   './videos/sustainability-big.mp4',
+//   './videos/video7.mp4'
+// ];
+
+var CACHE_NAME = 'my-site-cache-v4';
 var urlsToCache = [
-  './',
-  './videos/040419_SHOT 02.3.mp4',
-  './videos/040519_SHOT 03.2.mp4',
-  './videos/040419_SHOT 04.2.mp4',
-  './videos/040419_SHOT 05.02.mp4',
-  './videos/040419_SHOT 06.2.mp4',
-  './videos/sustainability-big.mp4'
+  './'
 ];
 
 self.addEventListener('activate', event => {
@@ -49,6 +53,8 @@ self.addEventListener('install', function(event) {
 //This code is based on  https://googlechrome.github.io/samples/service-worker/prefetch-video/ 
 
 self.addEventListener('fetch', function(event) {
+
+  console.log('event',event);
   
   headersLog = [];
   for (var pair of event.request.headers.entries()) {
@@ -65,7 +71,7 @@ self.addEventListener('fetch', function(event) {
     var pos2=rangeMatch[2];
     if (pos2) { pos2=Number(pos2); }
     
-    // console.log('Range request for '+ event.request.url,'Range: '+rangeHeader, "Parsed as: "+pos+"-"+pos2);
+    console.log('Range request for '+ event.request.url,'Range: '+rangeHeader, "Parsed as: "+pos+"-"+pos2);
     event.respondWith(
       caches.open(CACHE_NAME)
       .then(function(cache) {
@@ -75,7 +81,7 @@ self.addEventListener('fetch', function(event) {
           // console.log("Not found in cache - doing fetch")
           return fetch(event.request)
           .then(res => {
-            // console.log("Fetch done - returning response ",res)
+            console.log("Fetch done - returning response ",res)
             return res.arrayBuffer();
           });
         }
@@ -92,7 +98,7 @@ self.addEventListener('fetch', function(event) {
             (pos2||(ab.byteLength - 1)) + '/' + ab.byteLength]]
         };
         
-        // console.log("Response: ",JSON.stringify(responseHeaders))
+        console.log("Response: ",JSON.stringify(responseHeaders))
         var abSliced={};
         if (pos2>0){
           abSliced=ab.slice(pos,pos2+1);
@@ -106,7 +112,7 @@ self.addEventListener('fetch', function(event) {
         );
       }));
   } else {
-    // console.log('Non-range request for', event.request.url);
+    console.log('Non-range request for', event.request.url);
     event.respondWith(
     // caches.match() will look for a cache entry in all of the caches available to the service worker.
     // It's an alternative to first opening a specific named cache and then matching on that.
