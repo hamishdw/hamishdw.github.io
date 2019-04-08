@@ -10,17 +10,15 @@ var urlsToCache = [
   './images/',
   './apple-icon-60x60.png',
   './asset-manifest.json',
-
   './icon.png',
   './index.html',
   './manifest.json',
   './service-worker-custom.js',
   './service-worker.js',
-
   './videos/video2.mp4',
   './videos/video3.mp4',
   './videos/video4.mp4',
-  './videos/video5.mp4'
+  './videos/sustainability-big.mp4'
 ];
 
 self.addEventListener('activate', event => {
