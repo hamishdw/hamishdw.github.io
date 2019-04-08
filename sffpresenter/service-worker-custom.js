@@ -7,9 +7,9 @@ self.addEventListener('install', function(event) {
   var urlsToPrefetch = [
     './static/',
     // './images/',
-    // './asset-manifest.json',
+    './asset-manifest.json',
     // './index.html',
-    // './manifest.json',
+    './manifest.json',
     // './service-worker-custom.js',
     // './videos/video2.mp4',
     // './videos/video3.mp4',
