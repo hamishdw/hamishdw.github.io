@@ -56,7 +56,7 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('fetch', function(event) {
 
-  console.log('event',event);
+  // console.log('event',event);
   
   headersLog = [];
   for (var pair of event.request.headers.entries()) {
@@ -73,7 +73,7 @@ self.addEventListener('fetch', function(event) {
     var pos2=rangeMatch[2];
     if (pos2) { pos2=Number(pos2); }
     
-    console.log('Range request for '+ event.request.url,'Range: '+rangeHeader, "Parsed as: "+pos+"-"+pos2);
+    // console.log('Range request for '+ event.request.url,'Range: '+rangeHeader, "Parsed as: "+pos+"-"+pos2);
     event.respondWith(
       caches.open(CACHE_NAME)
       .then(function(cache) {
@@ -83,7 +83,7 @@ self.addEventListener('fetch', function(event) {
           // console.log("Not found in cache - doing fetch")
           return fetch(event.request)
           .then(res => {
-            console.log("Fetch done - returning response ",res)
+            // console.log("Fetch done - returning response ",res)
             return res.arrayBuffer();
           });
         }
@@ -100,7 +100,7 @@ self.addEventListener('fetch', function(event) {
             (pos2||(ab.byteLength - 1)) + '/' + ab.byteLength]]
         };
         
-        console.log("Response: ",JSON.stringify(responseHeaders))
+        // console.log("Response: ",JSON.stringify(responseHeaders))
         var abSliced={};
         if (pos2>0){
           abSliced=ab.slice(pos,pos2+1);
@@ -114,7 +114,7 @@ self.addEventListener('fetch', function(event) {
         );
       }));
   } else {
-    console.log('Non-range request for', event.request.url);
+    // console.log('Non-range request for', event.request.url);
     event.respondWith(
     // caches.match() will look for a cache entry in all of the caches available to the service worker.
     // It's an alternative to first opening a specific named cache and then matching on that.
