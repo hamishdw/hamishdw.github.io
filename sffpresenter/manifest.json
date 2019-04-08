@@ -3,9 +3,9 @@
   "short_name": "Food Service",
   "theme_color": "#636e4c",
   "background_color": "#636e4c",
-  "display": "fullscreen",
   "orientation": "portrait",
-  "Scope": "/",
+  "start_url": "index.html",
+  "display": "standalone",
   "icons": [
     {
       "src": "images/favicons/icon-72x72.png",
