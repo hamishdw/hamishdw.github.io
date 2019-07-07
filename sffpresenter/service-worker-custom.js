@@ -1,21 +1,20 @@
-var CACHE_VERSION = 2;
+var CACHE_VERSION = 3;
 var CURRENT_CACHES = {
   prefetch: 'prefetch-cache-v' + CACHE_VERSION
 };
 
 self.addEventListener('install', function(event) {
   var urlsToPrefetch = [
-    './static/',
-    // './images/',
-    './asset-manifest.json',
-    // './index.html',
-    './manifest.json',
-    // './service-worker-custom.js',
-    // './videos/video2.mp4',
-    // './videos/video3.mp4',
-    // './videos/video4.mp4',
-    // './videos/sustainability-big.mp4',
+    './',
+    './videos/video2.mp4',
+    './videos/video3.mp4',
+    './videos/video4.mp4',
+    './videos/sustainability-big.mp4'
   ];
+
+  // var urlsToPrefetch = [
+  //   './'
+  // ];
 
   // All of these logging statements should be visible via the "Inspect" interface
   // for the relevant SW accessed via chrome://serviceworker-internals
@@ -54,8 +53,6 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  console.log('Handling fetch event for', event.request.url);
-
   if (event.request.headers.get('range')) {
     var pos =
     Number(/^bytes\=(\d+)\-$/g.exec(event.request.headers.get('range'))[1]);
