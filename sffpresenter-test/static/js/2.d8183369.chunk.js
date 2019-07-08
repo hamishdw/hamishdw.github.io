@@ -1,0 +1,2 @@
+webpackJsonp([2],{63:function(e,n){e.exports={lang:"eng",Landing:{title:"Foodservice Range"},Nav:{items:["New Packaging","Source","Sustainability"],range:{title:"Our Range",items:["Reserve","Angus","Cervena","NZ Beef","NZ Lamb","NZ Venison"]}}}}});
+//# sourceMappingURL=2.d8183369.chunk.js.map
