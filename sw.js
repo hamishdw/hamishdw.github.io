@@ -6,7 +6,7 @@ const filesToCache = [
   './videos/sustainability-big.mp4'
 ];
 
-const staticCacheName = 'pages-cache-v2';
+const staticCacheName = 'pages-cache-v3';
 
 self.addEventListener('install', event => {
   console.log('Attempting to install service worker and cache static assets');
@@ -17,6 +17,8 @@ self.addEventListener('install', event => {
     .then(cache => {
       console.log('cache',cache);
       return cache.addAll(filesToCache);
+    }).catch(error => {
+      console.log('error...',error);
     })
   );
 });
