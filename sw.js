@@ -10,12 +10,9 @@ const staticCacheName = 'pages-cache-v3';
 
 self.addEventListener('install', event => {
   console.log('Attempting to install service worker and cache static assets');
-  console.log('event',event);
-  console.log('event.waitUntil',event.waitUntil);
   event.waitUntil(
     caches.open(staticCacheName)
     .then(cache => {
-      console.log('cache',cache);
       return cache.addAll(filesToCache);
     }).catch(error => {
       console.log('error...',error);
@@ -27,9 +24,6 @@ self.addEventListener('activate', event => {
   console.log('Activating new service worker...');
 
   const cacheWhitelist = [staticCacheName];
-
-  console.log('cacheWhitelist',cacheWhitelist);
-  console.log('event',event);
 
   event.waitUntil(
     caches.keys().then(cacheNames => {
