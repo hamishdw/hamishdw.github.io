@@ -1,6 +1,6 @@
 // THANKS - Phil Nash https://github.com/philnash/philna.sh/blob/ba798a2d5d8364fc7c1dae1819cbd8ef103c8b67/sw.js#L50-L94
 
-var version = "1.0.26";
+var version = "1.0.27";
 
 var staticCacheName = "ver-"+version;
 const staticAssets = [
@@ -31,10 +31,9 @@ self.addEventListener('install', function(event) {
       cacheAllIn(staticAssets, staticCacheName),
       cacheAllIn(offlinePages, pageCacheName)
     ]).then(function() {
-      console.log('1',1);
       self.skipWaiting();
     }).catch(e => {
-      console.log('e from cache all',e);
+      console.log('error from cache all',e);
     })
   );
 });
@@ -43,109 +42,15 @@ self.addEventListener('activate', function(event) {
   console.log('version',version);
   event.waitUntil(
     deleteOldCaches(currentCaches).then(function() {
-      console.log('2',2);
       self.clients.claim();
     })
   );
 });
 
-
-
-// self.addEventListener('fetch', function(event) {
-  
-//   headersLog = [];
-//   for (var pair of event.request.headers.entries()) {
-//     headersLog.push(pair[0]+ ': '+ pair[1])
-//   }
-  
-// //  console.log('Handling fetch event for', event.request.url, JSON.stringify(headersLog));
-
-//   if (event.request.headers.get('range')) {
-//     var rangeHeader=event.request.headers.get('range');
-//     var rangeMatch =rangeHeader.match(/^bytes\=(\d+)\-(\d+)?/)
-//     var pos =Number(rangeMatch[1]);
-//     var pos2=rangeMatch[2];
-//     if (pos2) { pos2=Number(pos2); }
-    
-//     console.log('Range request for '+ event.request.url,'Range: '+rangeHeader, "Parsed as: "+pos+"-"+pos2);
-//     event.respondWith(
-//       caches.open(currentCaches.prefetch)
-//       .then(function(cache) {
-//         console.log('cache',cache);
-//         return cache.match(event.request.url);
-//       }).then(function(res) {
-//         if (!res) {
-//           console.log("Not found in cache - doing fetch")
-//           return fetch(event.request)
-//           .then(res => {
-//             console.log("Fetch done - returning response ",res)
-//             return res.arrayBuffer();
-//           });
-//         }
-//         console.log("FOUND in cache - doing fetch")
-//         return res.arrayBuffer();
-//       }).then(function(ab) {
-//         console.log("Response procssing")
-//         let responseHeaders=  {
-//           status: 206,
-//           statusText: 'Partial Content',
-//           headers: [
-//             ['Content-Type', 'video/mp4'],
-//             ['Content-Range', 'bytes ' + pos + '-' + 
-//             (pos2||(ab.byteLength - 1)) + '/' + ab.byteLength]]
-//         };
-        
-//         // console.log("Response: ",JSON.stringify(responseHeaders))
-//         var abSliced={};
-//         if (pos2>0){
-//           abSliced=ab.slice(pos,pos2+1);
-//         }else{
-//           abSliced=ab.slice(pos);
-//         }
-        
-//         // console.log("Response length: ",abSliced.byteLength)
-//         return new Response(
-//           abSliced,responseHeaders
-//         );
-//       }));
-//   } else {
-//     // console.log('Non-range request for', event.request.url);
-//     event.respondWith(
-//     // caches.match() will look for a cache entry in all of the caches available to the service worker.
-//     // It's an alternative to first opening a specific named cache and then matching on that.
-//     caches.match(event.request).then(function(response) {
-//       if (response) {
-//         // console.log('Found response in cache:', response);
-//         return response;
-//       }
-//       // console.log('No response found in cache. About to fetch from network...');
-//       // event.request will always have the proper mode set ('cors, 'no-cors', etc.) so we don't
-//       // have to hardcode 'no-cors' like we do when fetch()ing in the install handler.
-//       return fetch(event.request).then(function(response) {
-//         // console.log('Response from network is:', response);
-
-//         return response;
-//       }).catch(function(error) {
-//         // This catch() will handle exceptions thrown from the fetch() operation.
-//         // Note that a HTTP error response (e.g. 404) will NOT trigger an exception.
-//         // It will return a normal response object that has the appropriate error code set.
-//         console.error('Fetching failed:', error);
-
-//         throw error;
-//       });
-//     })
-//     );
-//   }
-// });
-
 self.addEventListener('fetch', function(event) {
-  console.log('event',event);
   var url = new URL(event.request.url);
 
-  console.log('event.request.headers.get(range)',event.request.headers.get('range'));
-  console.log('url.pathname',url.pathname);
   if (url.pathname.match(/^\/((images|videos|test)\/|manifest.json$)/)) {
-    console.log('ya it does');
     if (event.request.headers.get('range')) {
       event.respondWith(returnRangeRequest(event.request, staticCacheName));
     } else {
@@ -162,7 +67,6 @@ self.addEventListener('fetch', function(event) {
 });
 
 function returnRangeRequest(request, cacheName) {
-  console.log('request',request);
   return caches
     .open(cacheName)
     .then(function(cache) {
@@ -188,7 +92,6 @@ function returnRangeRequest(request, cacheName) {
       const bytes = /^bytes\=(\d+)\-(\d+)?$/g.exec(
         request.headers.get('range')
       );
-        // console.log('request.headers.get("range")',request.headers.get("range"));
 
       if (bytes) {
         console.log('206',arrayBuffer);
@@ -214,15 +117,12 @@ function returnRangeRequest(request, cacheName) {
 
 function cacheAllIn(paths, cacheName) {
   return caches.open(cacheName).then(function(cache) {
-    console.log('cache',cache);
     return cache.addAll(paths);
   });
 }
 
 function deleteOldCaches(currentCaches) {
-  console.log('currentCaches',currentCaches);
   return caches.keys().then(function(names) {
-    console.log('names',names);
     return Promise.all(
       names
         .filter(function(name) {
@@ -254,17 +154,14 @@ function cacheSuccessfulResponse(cache, request, response) {
 }
 
 function returnFromCacheOrFetch(request, cacheName) {
-  console.log('4',4);
   return Promise.all(openCacheAndMatchRequest(cacheName, request)).then(
     function(responses) {
       var cache = responses[0];
       var cacheResponse = responses[1];
       // return the cached response if we have it, otherwise the result of the fetch.
-      console.log('responses',responses);
       return (
         cacheResponse ||
         fetch(request).then(function(fetchResponse) {
-          console.log('fetchResponse',fetchResponse);
           // Cache the updated file and then return the response
           cacheSuccessfulResponse(cache, request, fetchResponse);
           return fetchResponse;
@@ -310,9 +207,7 @@ function cacheThenNetwork(request, cacheName) {
 }
 
 function refresh(response) {
-  console.log('response',response);
   return self.clients.matchAll().then(function(clients) {
-    console.log('clients',clients);
     clients.forEach(function(client) {
       var message = {
         type: 'refresh',
