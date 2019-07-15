@@ -1,6 +1,6 @@
 // THANKS - Phil Nash https://github.com/philnash/philna.sh/blob/ba798a2d5d8364fc7c1dae1819cbd8ef103c8b67/sw.js#L50-L94
 
-var version = "1.0.28";
+var version = "1.0.29";
 
 var staticCacheName = "ver-"+version;
 const staticAssets = [
