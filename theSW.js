@@ -1,6 +1,6 @@
 // THANKS - Phil Nash https://github.com/philnash/philna.sh/blob/ba798a2d5d8364fc7c1dae1819cbd8ef103c8b67/sw.js#L50-L94
 
-var version = "1.0.29";
+var version = "1.0.30";
 
 var staticCacheName = "ver-"+version;
 const staticAssets = [
@@ -20,7 +20,7 @@ const staticAssets = [
 ];
 
 var pageCacheName = "index-"+version;
-var offlinePages = ['./index.html'];
+var offlinePages = ['./'];
 
 var currentCaches = [staticCacheName, pageCacheName];
 
@@ -199,7 +199,7 @@ function cacheThenNetwork(request, cacheName) {
           .catch(e => {
             console.log('e',e);
             // Offline, so return the offline page.
-            return caches.match('./index.html');
+            return caches.match('./');
           });
       }
     }
