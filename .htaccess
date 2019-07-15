@@ -1,1 +1,3 @@
-Header set Cache-Control "max-age=60, public"
+<FilesMatch "\.(html|css|js|json|otf|jpg|png|svg|mp4)$">
+  Header set Cache-Control "max-age=60, public"
+</FilesMatch>
