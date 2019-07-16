@@ -26,11 +26,6 @@ var currentCaches = [staticCacheName, pageCacheName];
 
 self.addEventListener('install', function(event) {
   console.log('version',version);
-
-  console.log('staticAssets',staticAssets);
-  console.log('staticCacheName',staticCacheName);
-  console.log('offlinePages',offlinePages);
-  console.log('pageCacheName',pageCacheName);
   event.waitUntil(
     Promise.all([
       cacheAllIn(staticAssets, staticCacheName),
@@ -53,6 +48,7 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
+  self.skipWaiting();
   var url = new URL(event.request.url);
 
   if (url.pathname.match(/^\/((images|videos|test)\/|manifest.json$)/)) {
