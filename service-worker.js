@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["static/css/main.55692e2b.css","1700d13d1f9afa72174d1915fa1caa3e"],["static/js/main.97184533.js","c8f4e1003c33be78f45c1ee65b5adf1d"],["static/media/DalaMoa-Medium.1ffc0988.otf","1ffc0988edca07d37e20b0cbcabf9196"],["static/media/Pitch-Light.6956ca30.otf","6956ca30acb1e3a171b13f45524e2431"],["static/media/Pitch-Semibold.f710bc24.otf","f710bc24e21e62a1b71eb5ef11aaf1ad"],["static/media/slider.9537dae6.svg","9537dae604b2936694dbf895de433147"]];
+var precacheConfig = [["static/css/main.55692e2b.css","1700d13d1f9afa72174d1915fa1caa3e"],["static/js/main.6c3e3186.js","7c9ae51707297b0445e19ac35076b2a7"],["static/media/DalaMoa-Medium.1ffc0988.otf","1ffc0988edca07d37e20b0cbcabf9196"],["static/media/Pitch-Light.6956ca30.otf","6956ca30acb1e3a171b13f45524e2431"],["static/media/Pitch-Semibold.f710bc24.otf","f710bc24e21e62a1b71eb5ef11aaf1ad"],["static/media/slider.9537dae6.svg","9537dae604b2936694dbf895de433147"]];
 var cacheName = 'sw-precache-v3-sw-precache-' + (self.registration ? self.registration.scope : '');
 
 

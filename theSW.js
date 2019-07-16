@@ -1,6 +1,6 @@
 // THANKS - Phil Nash https://github.com/philnash/philna.sh/blob/ba798a2d5d8364fc7c1dae1819cbd8ef103c8b67/sw.js#L50-L94
 
-var version = "1.1.17";
+var version = "1.1.19";
 
 var staticCacheName = "ver-"+version;
 const staticAssets = [
@@ -94,8 +94,6 @@ function returnRangeRequest(request, cacheName) {
       return res.arrayBuffer();
     })
     .then(function(arrayBuffer) {
-      self.skipWaiting(); // attempt to udate with single refresh
-
       const bytes = /^bytes\=(\d+)\-(\d+)?$/g.exec(
         request.headers.get('range')
       );
@@ -225,3 +223,9 @@ function refresh(response) {
     });
   });
 }
+
+self.addEventListener('message', event => {
+  if (event.data === 'skipWaiting') {
+    self.skipWaiting();
+  }
+});
