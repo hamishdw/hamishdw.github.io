@@ -1,6 +1,6 @@
 // THANKS - Phil Nash https://github.com/philnash/philna.sh/blob/ba798a2d5d8364fc7c1dae1819cbd8ef103c8b67/sw.js#L50-L94
 
-var version = "1.1.5";
+var version = "1.1.6";
 
 var staticCacheName = "ver-"+version;
 const staticAssets = [
@@ -26,6 +26,11 @@ var currentCaches = [staticCacheName, pageCacheName];
 
 self.addEventListener('install', function(event) {
   console.log('version',version);
+
+  console.log('staticAssets',staticAssets);
+  console.log('staticCacheName',staticCacheName);
+  console.log('offlinePages',offlinePages);
+  console.log('pageCacheName',pageCacheName);
   event.waitUntil(
     Promise.all([
       cacheAllIn(staticAssets, staticCacheName),
