@@ -1,15 +1,11 @@
 {
-  "files": {
-    "main.css": "./static/css/main.dd201f81.chunk.css",
-    "main.js": "./static/js/main.43dae71a.chunk.js",
-    "main.js.map": "./static/js/main.43dae71a.chunk.js.map",
-    "runtime~main.js": "./static/js/runtime~main.d653cc00.js",
-    "runtime~main.js.map": "./static/js/runtime~main.d653cc00.js.map",
-    "static/js/2.6272c335.chunk.js": "./static/js/2.6272c335.chunk.js",
-    "static/js/2.6272c335.chunk.js.map": "./static/js/2.6272c335.chunk.js.map",
-    "index.html": "./index.html",
-    "precache-manifest.fbe5d46b409041a5b7a7a44ad963e618.js": "./precache-manifest.fbe5d46b409041a5b7a7a44ad963e618.js",
-    "service-worker.js": "./service-worker.js",
-    "static/css/main.dd201f81.chunk.css.map": "./static/css/main.dd201f81.chunk.css.map"
-  }
+  "main.css": "static/css/main.13f81e9f.css",
+  "main.css.map": "static/css/main.13f81e9f.css.map",
+  "main.js": "static/js/main.bde8772b.js",
+  "main.js.map": "static/js/main.bde8772b.js.map",
+  "static/media/DalaMoa-Medium-Web.woff": "static/media/DalaMoa-Medium-Web.2f2934e6.woff",
+  "static/media/PitchWeb-Light.woff": "static/media/PitchWeb-Light.07fbdbbf.woff",
+  "static/media/PitchWeb-Semibold.woff": "static/media/PitchWeb-Semibold.0fc021d1.woff",
+  "static/media/refresh.svg": "static/media/refresh.3a55befc.svg",
+  "static/media/slider.svg": "static/media/slider.8cabf57f.svg"
 }
