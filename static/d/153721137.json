@@ -1,1 +1,0 @@
-{"errors":[{"message":"Syntax Error GraphQL (8:9) Expected {, found Name \"__typename\"\n\n7:         ... on UploadsVolume\n8:         __typename\n           ^\n9:       }\n","locations":[{"line":12,"column":5}],"path":["craft","entries"]}],"data":{"craft":{"entries":null}}}
